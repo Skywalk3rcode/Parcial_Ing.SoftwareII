@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataInsight AI — Plataforma Inteligente de Análisis y ML</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1E3A5F;
+            --primary-dark: #0f1f33;
+            --accent: #2ECC71;
+            --secondary: #3498DB;
+            --warning: #F39C12;
+            --danger: #E74C3C;
+            --bg-light: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(30, 58, 95, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.35);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            background: #27ae60;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: var(--primary) !important;
+        }
+
+        .btn-outline:hover {
+            background: #f1f5f9;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1E3A5F 0%, #2980B9 100%);
+            color: #ffffff;
+            padding: 5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.15), transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.2), transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2.2rem;
+            font-weight: 300;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Badges bar */
+        .badges-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badges-bar img {
+            height: 24px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Feature Cards */
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-icon.blue { background: #EBF5FB; }
+        .card-icon.green { background: #E8F8F5; }
+        .card-icon.orange { background: #FEF9E7; }
+        .card-icon.purple { background: #F4ECF7; }
+        .card-icon.red { background: #FDEDEC; }
+        .card-icon.teal { background: #E0F2F1; }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #F1F5F9;
+            color: var(--text-dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Deployment Notice */
+        .deploy-banner {
+            background: #FFFFFF;
+            border: 2px solid #3498DB;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 4rem 0;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.1);
+        }
+
+        .deploy-banner h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .deploy-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-box {
+            background: #F8FAFC;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background: var(--secondary);
+            color: #ffffff;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .step-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Code Block */
+        pre {
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        /* Testing section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--accent);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: #94A3B8;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #38BDF8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.05rem; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>📊</span> DataInsight AI
+            </a>
+            <div class="nav-links">
+                <a href="#modulos">Módulos</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#pruebas">Pruebas (86/86)</a>
+                <a href="#despliegue">Despliegue</a>
+                <a href="https://github.com/Skywalk3rcode/Parcial_Ing.SoftwareII" target="_blank" class="btn btn-outline">
+                    ⭐ Ver en GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge-tag">INGENIERÍA DE SOFTWARE II • 2026</span>
+            <h1>DataInsight AI</h1>
+            <p>
+                Sistema inteligente y modular para análisis automatizado, perfilado de calidad,
+                limpieza reversible, exploración estadística y modelos de Machine Learning.
+            </p>
+            <div class="hero-cta">
+                <a href="https://share.streamlit.io/deploy?repository=Skywalk3rcode/Parcial_Ing.SoftwareII&branch=main&mainModule=app.py" target="_blank" class="btn btn-accent">
+                    🚀 Desplegar en Streamlit Cloud
+                </a>
+                <a href="https://github.com/Skywalk3rcode/Parcial_Ing.SoftwareII" target="_blank" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color:#fff !important; border-color: rgba(255,255,255,0.3)">
+                    📦 Repositorio GitHub
+                </a>
+                <a href="#ejecucion-local" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color:#fff !important; border-color: rgba(255,255,255,0.3)">
+                    💻 Ejecutar Localmente
+                </a>
+            </div>
+
+            <div class="badges-bar">
+                <img src="https://img.shields.io/badge/Python-3.12-blue.svg?logo=python&logoColor=white" alt="Python 3.12">
+                <img src="https://img.shields.io/badge/Streamlit-1.42+-FF4B4B.svg?logo=streamlit&logoColor=white" alt="Streamlit">
+                <img src="https://img.shields.io/badge/Scikit--Learn-1.4+-F7931E.svg?logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
+                <img src="https://img.shields.io/badge/Tests-86%20Passed-2ECC71.svg" alt="86 Tests Passing">
+                <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Metrics Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">86 / 86</div>
+                <div class="stat-label">Pruebas Unitarias Exitosas (0 fallos)</div>
+            </div>
+            <div class="stat-card" style="border-top-color: var(--secondary)">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Módulos Funcionales Completos</div>
+            </div>
+            <div class="stat-card" style="border-top-color: var(--warning)">
+                <div class="stat-number">11</div>
+                <div class="stat-label">Transformaciones de Limpieza con Deshacer</div>
+            </div>
+            <div class="stat-card" style="border-top-color: var(--primary)">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Datos Reales (Sin simulaciones)</div>
+            </div>
+        </div>
+
+        <!-- How to Deploy / Live App Notice -->
+        <div class="deploy-banner" id="despliegue">
+            <h3>🌐 Despliegue en la Nube (Streamlit Cloud & GitHub)</h3>
+            <p>
+                Debido a que <strong>DataInsight AI</strong> requiere un motor de ejecución Python completo para cálculo numérico
+                (<em>Pandas, Scikit-Learn, SQLite, Plotly</em>), las aplicaciones Streamlit se ejecutan en 
+                <strong>Streamlit Community Cloud</strong> directamente vinculado a este repositorio de GitHub.
+            </p>
+
+            <div class="deploy-steps">
+                <div class="step-box">
+                    <span class="step-number">1</span>
+                    <h4>Abre Streamlit Cloud</h4>
+                    <p>Ingresa a <a href="https://share.streamlit.io" target="_blank">share.streamlit.io</a> e inicia sesión con tu cuenta de GitHub.</p>
+                </div>
+                <div class="step-box">
+                    <span class="step-number">2</span>
+                    <h4>Selecciona el repositorio</h4>
+                    <p>Selecciona <code>Skywalk3rcode/Parcial_Ing.SoftwareII</code> y rama <code>main</code>.</p>
+                </div>
+                <div class="step-box">
+                    <span class="step-number">3</span>
+                    <h4>Archivo principal</h4>
+                    <p>Especifica el archivo <code>app.py</code> y haz clic en <strong>Deploy</strong>. ¡La app estará en vivo en segundos!</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <a href="https://share.streamlit.io/deploy?repository=Skywalk3rcode/Parcial_Ing.SoftwareII&branch=main&mainModule=app.py" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.8rem 1.8rem;">
+                    🚀 Desplegar Automáticamente en 1 Clic
+                </a>
+            </div>
+        </div>
+
+        <!-- Modules Section -->
+        <section id="modulos">
+            <div class="section-title">
+                <h2>Arquitectura de Módulos</h2>
+                <p>Cada componente está diseñado con separación de responsabilidades y tipado estricto</p>
+            </div>
+
+            <div class="grid-features">
+                <div class="card">
+                    <div class="card-icon blue">🔍</div>
+                    <h3>1. Perfilado de Calidad</h3>
+                    <p>Cálculo de índice de calidad (0-100), detección de valores nulos, filas duplicadas, tipos incoherentes y detección de anomalías por IQR y Z-Score.</p>
+                    <div class="card-tags">
+                        <span class="tag">IQR</span>
+                        <span class="tag">Z-Score</span>
+                        <span class="tag">Gauge Plotly</span>
+                        <span class="tag">Detección de Tipos</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon green">🧹</div>
+                    <h3>2. Limpieza & Transformación</h3>
+                    <p>11 operaciones de limpieza con historial completo y capacidad de deshacer (Undo). Imputación inteligente, conversión de tipos, escalado y codificación One-Hot.</p>
+                    <div class="card-tags">
+                        <span class="tag">Historial con Deshacer</span>
+                        <span class="tag">One-Hot Encoding</span>
+                        <span class="tag">Escalado MinMax / Stand</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon orange">📈</div>
+                    <h3>3. Exploración de Datos (EDA)</h3>
+                    <p>Estadísticas descriptivas completas, histogramas con KDE, boxplots, matriz de correlación interactiva (Pearson/Spearman) y análisis temporal.</p>
+                    <div class="card-tags">
+                        <span class="tag">Histogramas</span>
+                        <span class="tag">Correlación</span>
+                        <span class="tag">Boxplots</span>
+                        <span class="tag">Series de Tiempo</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon purple">💰</div>
+                    <h3>4. Análisis Comercial y Ventas</h3>
+                    <p>Detección automática de columnas de ventas, ingresos, fechas y categorías. KPIs de ingresos, ticket promedio, Pareto 80/20 y tendencias mensuales.</p>
+                    <div class="card-tags">
+                        <span class="tag">Pareto 80/20</span>
+                        <span class="tag">Ticket Promedio</span>
+                        <span class="tag">Tendencias</span>
+                        <span class="tag">Top Clientes/Prod</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon red">🤖</div>
+                    <h3>5. Machine Learning</h3>
+                    <p>Modelos de regresión (Linear, Ridge, RF, Gradient Boosting) y clasificación con métricas completas (R², RMSE, MAE, Accuracy, F1, Matriz de Confusión).</p>
+                    <div class="card-tags">
+                        <span class="tag">Regresión</span>
+                        <span class="tag">Clasificación</span>
+                        <span class="tag">Series Temporales</span>
+                        <span class="tag">Pipelines Scikit-Learn</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon teal">📋</div>
+                    <h3>6. Historial & Reportes</h3>
+                    <p>Persistencia en base de datos SQLite de cada sesión y operación. Generador de reportes de auditoría exportables en CSV, Excel, HTML y JSON.</p>
+                    <div class="card-tags">
+                        <span class="tag">SQLite3</span>
+                        <span class="tag">Exportación Excel</span>
+                        <span class="tag">Reportes HTML</span>
+                        <span class="tag">Auditoría</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Local Execution -->
+        <section id="ejecucion-local" style="margin-top: 4rem;">
+            <div class="section-title">
+                <h2>Ejecución en Entorno Local</h2>
+                <p>Pasos sencillos para clonar y ejecutar en tu máquina</p>
+            </div>
+
+            <pre><code># 1. Clonar el repositorio
+git clone https://github.com/Skywalk3rcode/Parcial_Ing.SoftwareII.git
+cd Parcial_Ing.SoftwareII
+
+# 2. Crear y activar entorno virtual
+python -m venv venv
+# En Windows:
+.\venv\Scripts\activate
+# En Linux/macOS:
+source venv/bin/activate
+
+# 3. Instalar dependencias
+pip install -r requirements.txt
+
+# 4. Ejecutar las pruebas unitarias
+pytest tests/ -v
+
+# 5. Iniciar la aplicación Streamlit
+streamlit run app.py</code></pre>
+        </section>
+
+        <!-- Testing Section -->
+        <section id="pruebas" style="margin-top: 4rem;">
+            <div class="section-title">
+                <h2>Verificación y Calidad de Código</h2>
+                <p>Suite completa de pruebas automatizadas con Pytest</p>
+            </div>
+
+            <div class="card" style="background:#1E293B; color:#F8FAFC; border:none;">
+                <pre style="margin:0; background:transparent;"><code>============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\Documentos\INGENIERIA DE SOFTWARE II\datainsight-ai
+configfile: pytest.ini
+collected 86 items
+
+tests\test_data_cleaner.py ............................                  [ 32%]
+tests\test_data_loader.py ..........                                     [ 44%]
+tests\test_data_profiler.py ..................                           [ 65%]
+tests\test_ml_pipeline.py ...................                            [ 87%]
+tests\test_sales_analysis.py ...........                                 [100%]
+
+============================= 86 passed in 1.66s ==============================</code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>DataInsight AI</strong> — Proyecto de Ingeniería de Software II</p>
+        <p style="margin-top: 6px;">
+            Desarrollado por <a href="https://github.com/Skywalk3rcode" target="_blank">Skywalk3rcode</a> • 
+            Repositorio: <a href="https://github.com/Skywalk3rcode/Parcial_Ing.SoftwareII" target="_blank">Parcial_Ing.SoftwareII</a>
+        </p>
+    </footer>
+
+</body>
+</html>

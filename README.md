@@ -2,6 +2,14 @@
 
 Sistema inteligente de análisis, procesamiento y predicción de datos construido con Python y Streamlit.
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Site-2ECC71?logo=github&logoColor=white)](https://skywalk3rcode.github.io/Parcial_Ing.SoftwareII/)
+[![Streamlit Cloud](https://img.shields.io/badge/Streamlit%20Cloud-Deploy%20App-FF4B4B?logo=streamlit&logoColor=white)](https://share.streamlit.io/deploy?repository=Skywalk3rcode/Parcial_Ing.SoftwareII&branch=main&mainModule=app.py)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/Tests-86%20Passed-2ECC71.svg)](tests/)
+
+🌐 **Sitio Web en GitHub Pages:** [https://skywalk3rcode.github.io/Parcial_Ing.SoftwareII/](https://skywalk3rcode.github.io/Parcial_Ing.SoftwareII/)  
+🚀 **Despliegue directo en Streamlit Cloud:** [Haz clic aquí para desplegar](https://share.streamlit.io/deploy?repository=Skywalk3rcode/Parcial_Ing.SoftwareII&branch=main&mainModule=app.py)
+
 ---
 
 ## 🚀 Características principales
