@@ -1,0 +1,54 @@
+# Entornos virtuales
+venv/
+env/
+.env/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Datos privados
+data/uploads/
+data/*.csv
+data/*.xlsx
+data/*.xls
+!data/samples/
+
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pytest y cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Distribuciones
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+
+# Variables de entorno
+.env
+.env.local
